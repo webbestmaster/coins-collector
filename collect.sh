@@ -2,14 +2,26 @@
 
 #~/Android/Sdk/tools/emulator -avd Nexus_5_API_22 -wipe-data &
 
-#sleep 20s
 cd ~/Android/Sdk/platform-tools/
+
+# turn on device
+./adb shell input keyevent KEYCODE_POWER
+sleep 5s
+
+# unlock device
+./adb shell input swipe 360 1000 630 1000 #Swipe RIGHT
+sleep 5s
+
+#copy from device to desktop
+#./adb pull /sdcard/screen.png /home/dim/Desktop
+
+#sleep 20s
 #./adb wait-for-device &&
 ./adb shell pm clear com.alibaba.aliexpresshd
 #./adb uninstall ~/Downloads/app_5.0.1_apk-dl.com.apk
-./adb install -r ~/Downloads/app_5.0.1_apk-dl.com.apk
+#./adb install -r ~/Downloads/app_5.0.1_apk-dl.com.apk
 
-sleep 1s
+sleep 5s
 
 #./adb shell input tap 905 575 # click to "git it" -> node notification
 #sleep 5s
@@ -68,6 +80,8 @@ sleep 5s
 ./adb shell input tap 360 285 # click to coins
 sleep 5s
 
+./adb shell screencap -p /sdcard/screen.png
+./adb pull /sdcard/screen.png /home/dim/Desktop
 
 #
 #./adb shell input tap 160 220 # click to skip
