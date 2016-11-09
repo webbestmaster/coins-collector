@@ -112,7 +112,7 @@ sleep 5s
 echo "hide popup"
 sleep 5s
 
-./adb shell input tap 360 270 # get coins
+./adb shell input tap 380 270 # get coins
 echo "get coins"
 sleep 5s
 
@@ -123,8 +123,8 @@ now=${now// /-}
 now=${now//:/-}
 now=${now//--/-}
 
-./adb shell screencap -p "/sdcard/screen-$now.png"
-./adb pull "/sdcard/screen-$now.png" ~/Documents/screens/
+./adb shell screencap -p "/sdcard/screen-$email-$now.png"
+./adb pull "/sdcard/screen-$email-$now.png" ~/Documents/screens/
 echo "screen shot - done"
 sleep 3s
 
