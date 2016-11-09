@@ -21,12 +21,9 @@ do
         appName=(${item//=/ });
         appName="${appName[1]}";
 
-        echo "stop $appName"
-
         aliExporess="com.alibaba.aliexpresshd"
 #        echo ${#aliExporess} # get length of string
         appName="${appName%?}" # remove last extra character
-#        echo ${#appName}
 
         if [[ "com.alibaba.aliexpresshd" != $appName ]]; then
 
@@ -36,7 +33,7 @@ do
             ./adb shell pm clear $appName
             echo "uninstall $appName"
             ./adb shell pm uninstall $appName
-            echo "-- uninstall $appName is done";
+            echo " -- Uninstall $appName is done";
 
         fi
 
