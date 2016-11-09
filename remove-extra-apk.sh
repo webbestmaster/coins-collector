@@ -10,7 +10,7 @@ string=$(./adb shell 'pm list packages -f')
 #set -f                      # avoid globbing (expansion of *).
 array=(${string//^/ ,g})
 item="";
-finded="data";
+finded="/data/";
 appName="";
 for i in "${!array[@]}"
 do
