@@ -20,16 +20,16 @@ linuxOsAdbPath="/Library/Android/sdk/platform-tools/";
 #pathToAdb;
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    pathToAdb=$linuxOsAdbPath;
+    pathToAdb=$linuxOsAdbPath
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    pathToAdb=$macOsAdbPath;
+    pathToAdb=$macOsAdbPath
 fi
 
-cd ~/$pathToAdb;
+cd ~/$pathToAdb
 
 # turn on device
 ./adb shell input keyevent KEYCODE_POWER
-echo "turn on";
+echo "turn on"
 sleep 5s
 
 # unlock device
@@ -37,149 +37,94 @@ sleep 5s
 echo "unlock"
 sleep 5s
 
+./adb shell am force-stop com.alibaba.aliexpresshd
+echo "app stop"
+sleep 5s
+
 ./adb shell pm clear com.alibaba.aliexpresshd
-echo "app cleaded"
+echo "app cleared"
 sleep 5s
 
 
 
 
 ./adb shell input tap 110 280 # open app
-echo "app open";
-sleep 15s
+echo "app open"
+sleep 25s
 
 ./adb shell input tap 630 130 # skip screen
-echo "app promo screen";
+echo "skip promo screen"
 sleep 10s
 
 ./adb shell input tap 75 150 # open menu
-echo "open left menu";
+echo "open left menu"
 sleep 5s
 
 ./adb shell input tap 75 300 # open login
-echo "go to login screen";
+echo "go to login screen"
 sleep 5s
 
 ./adb shell input tap 200 1175 # click enter button
-echo "click to login button";
+echo "click to login button"
 sleep 5s
 
 ./adb shell input tap 330 250 # click to email field
-echo "click to e-mail field";
+echo "click to e-mail field"
 sleep 5s
 
 ./adb shell input text $email # enter e-mail # "lenard.rukol@gmail.com"
-echo "enter e-mail - $email";
+echo "enter e-mail - $email"
 sleep 5s
 
 ./adb shell input tap 330 370 # click to email password
-echo "click to password field";
+echo "click to password field"
 sleep 5s
 
 ./adb shell input text $password # enter password # "qwerty5678"
-echo "enter password - $password";
+echo "enter password - $password"
 sleep 5s
 
 ./adb shell input tap 380 520 # click to sign in
 echo "click to sign in button";
 sleep 5s
 
-
-sleep 500s
-
-
-# actions
-
-./adb shell input tap 360 1150 # click to bottom icon -> go apps
+./adb shell input tap 210 770 # hide google
+echo "hide google"
 sleep 5s
 
-./adb shell input tap 120 200 # click to aliexpress icon
-sleep 10s
-
-./adb shell input tap 620 120 # click to "skip" -> skip "tutorial"
+./adb shell input tap 490 1010 # hide new profile
+echo "hide new profile"
 sleep 5s
 
-./adb shell input tap 451 800 # do not install new version
+
+./adb shell input tap 75 150 # open menu
+echo "open left menu"
 sleep 5s
 
-./adb shell input tap 80 120 # open menu
+./adb shell input tap 205 400 # click to home
+echo "click to home"
 sleep 5s
 
-./adb shell input tap 325 480 # open my account
+./adb shell input tap 225 625 # click go to coins
+echo "click go to coins"
 sleep 5s
 
-./adb shell input tap 200 1150 # sign in button
+./adb shell input tap 580 1090 # hide popup
+echo "hide popup"
 sleep 5s
 
-./adb shell input tap 200 200 # click to e-mail
-sleep 2s
-
-./adb shell input text $email # enter e-mail # "lenard.rukol@gmail.com"
-sleep 1s
-
-./adb shell input tap 200 400 # click to password
-sleep 1s
-
-./adb shell input text $password # enter password # "qwerty5678"
-sleep 1s
-
-./adb shell input tap 320 500 # click to sign in
-sleep 10s
-
-./adb shell input tap 360 940 # click to extra popup
-sleep 5s
-
-./adb shell input tap 80 120 # open menu
-sleep 5s
-
-./adb shell input tap 285 400 # click to home
-sleep 5s
-
-./adb shell input tap 300 620 # click to link to coins
-sleep 5s
-
-./adb shell input tap 575 1100 # hide extra popup
-sleep 5s
-
-./adb shell input tap 360 285 # click to coins
+./adb shell input tap 360 270 # get coins
+echo "get coins"
 sleep 5s
 
 
 
 ./adb shell screencap -p /sdcard/screen.png
-./adb pull /sdcard/screen.png ~/Documents/
-echo "screen shot - done";
+now=$(date)
+./adb pull /sdcard/screen-$now.png ~/Documents/
+echo "screen shot - done"
 sleep 3s
 
 ./adb shell input keyevent KEYCODE_POWER
-echo "turn off";
+echo "turn off"
 sleep 3s
-
-#
-#./adb shell input tap 160 220 # click to skip
-#sleep 5s
-#
-#./adb shell input tap 160 220 # click to not now
-#sleep 5s
-#
-#./adb shell input tap 160 220 # click to menu
-#sleep 5s
-#
-#./adb shell input tap 160 220 # click to my account
-#sleep 5s
-#
-#./adb shell input tap 160 220 # click to sign in
-#sleep 5s
-
-# enter email and password
-
-
-#./adb shell monkey -p com.alibaba.aliexpresshd -c android.intent.category.LAUNCHER 1
-
-
-
-
-#./adb -e emu kill
-#
-#./adb kill-server
-
