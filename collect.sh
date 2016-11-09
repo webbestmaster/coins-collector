@@ -96,7 +96,6 @@ sleep 5s
 echo "hide new profile"
 sleep 5s
 
-
 ./adb shell input tap 75 150 # open menu
 echo "open left menu"
 sleep 5s
@@ -119,9 +118,13 @@ sleep 5s
 
 
 
-./adb shell screencap -p /sdcard/screen.png
 now=$(date)
-./adb pull /sdcard/screen-$now.png ~/Documents/
+now=${now// /-}
+now=${now//:/-}
+now=${now//--/-}
+
+./adb shell screencap -p "/sdcard/screen-$now.png"
+./adb pull "/sdcard/screen-$now.png" ~/Documents/screens/
 echo "screen shot - done"
 sleep 3s
 
