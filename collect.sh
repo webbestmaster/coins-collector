@@ -10,6 +10,9 @@ echo "password $2"
 email=$1
 password=$2
 
+email="lenard.rukol@gmail.com"
+password="qwerty5678"
+
 macOsAdbPath="/Library/Android/sdk/platform-tools/";
 # set right path fo linux
 linuxOsAdbPath="/Library/Android/sdk/platform-tools/";
@@ -41,6 +44,48 @@ sleep 5s
 
 
 
+./adb shell input tap 110 280 # open app
+echo "app open";
+sleep 15s
+
+./adb shell input tap 630 130 # skip screen
+echo "app promo screen";
+sleep 10s
+
+./adb shell input tap 75 150 # open menu
+echo "open left menu";
+sleep 5s
+
+./adb shell input tap 75 300 # open login
+echo "go to login screen";
+sleep 5s
+
+./adb shell input tap 200 1175 # click enter button
+echo "click to login button";
+sleep 5s
+
+./adb shell input tap 330 250 # click to email field
+echo "click to e-mail field";
+sleep 5s
+
+./adb shell input text $email # enter e-mail # "lenard.rukol@gmail.com"
+echo "enter e-mail - $email";
+sleep 5s
+
+./adb shell input tap 330 370 # click to email password
+echo "click to password field";
+sleep 5s
+
+./adb shell input text $password # enter password # "qwerty5678"
+echo "enter password - $password";
+sleep 5s
+
+./adb shell input tap 380 520 # click to sign in
+echo "click to sign in button";
+sleep 5s
+
+
+sleep 500s
 
 
 # actions
