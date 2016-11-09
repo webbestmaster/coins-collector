@@ -10,12 +10,12 @@ echo "password $2"
 email=$1
 password=$2
 
-email="lenard.rukol@gmail.com"
-password="qwerty5678"
+#email="lenard.rukol@gmail.com"
+#password="qwerty5678"
 
 macOsAdbPath=(~/Library/Android/sdk/platform-tools/);
 # set right path fo linux
-linuxOsAdbPath=(~/Library/Android/sdk/platform-tools/);
+linuxOsAdbPath=(~/Android/Sdk/platform-tools/);
 
 #pathToAdb;
 
@@ -25,7 +25,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     pathToAdb=$macOsAdbPath
 fi
 
-cd $macOsAdbPath
+cd $pathToAdb
 
 # turn on device
 ./adb shell input keyevent KEYCODE_POWER
